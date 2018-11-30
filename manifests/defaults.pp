@@ -10,6 +10,7 @@ class mcollective::defaults {
     $_core_libdir = $::osfamily ? {
       'Debian'  => '/usr/share/mcollective/plugins',
       'OpenBSD' => '/usr/local/libexec/mcollective',
+      'FreeBSD' => '/usr/local/etc/mcollective',
       default   => '/usr/libexec/mcollective',
     }
     # Where this module will sync file-managed plugins to.
@@ -19,6 +20,7 @@ class mcollective::defaults {
     $site_libdir = $::osfamily ? {
       'Debian'  => '/usr/local/share/mcollective',
       'OpenBSD' => regsubst($::rubyversion, '^(\d+)\.(\d+)\.(\d+)$', '/usr/local/lib/ruby/vendor_ruby/\1.\2/mcollective'),
+      'FreeBSD'  => '/usr/local/share/mcollective',
       default   => '/usr/local/libexec/mcollective',
     }
   } else {
